@@ -21,9 +21,10 @@ for occurrence in occurrences[:3]:
     print(occurrence.course.title, occurrence.start, occurrence.end)
 ```
 
-There is no ICS output yet. Each immutable `ClassOccurrence` carries the source
+Each immutable `ClassOccurrence` carries the source
 `Course`, the specific `MeetingPattern`, and timezone-aware `start` and `end`
-datetimes. It retains the location and course identifiers for a future exporter.
+datetimes. It retains the location and course identifiers for the
+[ICS exporter and CLI](ics-and-cli.md).
 
 ## Phase 3: one physical date, one instructional weekday
 
