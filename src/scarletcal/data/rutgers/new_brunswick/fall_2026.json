@@ -1,0 +1,46 @@
+{
+  "campus": "new_brunswick",
+  "timezone": "America/New_York",
+  "source": "https://scheduling.rutgers.edu/academic-calendar/",
+  "verified_on": "2026-09-15",
+  "term": "fall-2026",
+  "instruction_start": "2026-09-01",
+  "instruction_end": "2026-12-10",
+  "instructional_overrides": [
+    {
+      "date": "2026-09-07",
+      "weekday": null,
+      "reason": "Labor Day"
+    },
+    {
+      "date": "2026-09-08",
+      "weekday": "Monday",
+      "reason": "Monday classes"
+    },
+    {
+      "date": "2026-11-25",
+      "weekday": "Friday",
+      "reason": "Friday classes"
+    },
+    {
+      "date": "2026-11-26",
+      "weekday": null,
+      "reason": "Thanksgiving recess"
+    },
+    {
+      "date": "2026-11-27",
+      "weekday": null,
+      "reason": "Thanksgiving recess"
+    },
+    {
+      "date": "2026-11-28",
+      "weekday": null,
+      "reason": "Thanksgiving recess"
+    },
+    {
+      "date": "2026-11-29",
+      "weekday": null,
+      "reason": "Thanksgiving recess"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import time
+from datetime import datetime, time
 from enum import Enum
 
 
@@ -30,3 +30,17 @@ class Course:
     index: str
     credits: float
     meetings: tuple[MeetingPattern, ...]
+
+
+@dataclass(frozen=True)
+class ClassOccurrence:
+    """One actual meeting on a physical date, with timezone-aware endpoints.
+
+    The meeting retains its normal instructional weekday; start.date() is the
+    physical date, which can have a different weekday after a substitution.
+    """
+
+    course: Course
+    meeting: MeetingPattern
+    start: datetime
+    end: datetime

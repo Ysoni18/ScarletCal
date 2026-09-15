@@ -1,0 +1,56 @@
+{
+  "campus": "new_brunswick",
+  "timezone": "America/New_York",
+  "source": "https://scheduling.rutgers.edu/academic-calendar/",
+  "verified_on": "2026-09-15",
+  "term": "spring-2027",
+  "instruction_start": "2027-01-19",
+  "instruction_end": "2027-05-03",
+  "instructional_overrides": [
+    {
+      "date": "2027-03-13",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2027-03-14",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2027-03-15",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2027-03-16",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2027-03-17",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2027-03-18",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2027-03-19",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2027-03-20",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2027-03-21",
+      "weekday": null,
+      "reason": "Spring recess"
+    }
+  ]
+}
