@@ -49,6 +49,7 @@ unique UIDs and Unicode folding, and reconstruct timezone offsets from the
 embedded VTIMEZONE. CLI tests exercise both terms, malformed input, output
 protection, path aliases, encodings, and the module entry point.
 
-Automated tests are not proof of client-specific import behavior. Google Calendar,
-Apple Calendar, and Outlook interactive import checks remain a release checklist
-item; no user calendars were modified during implementation.
+Google Calendar imported the 140-event sample successfully; see the
+[interactive verification report](google-calendar-verification.md). Only a new
+dedicated test calendar was created and populated. Existing events were not edited.
+Apple Calendar and Outlook interactive import checks remain pending.

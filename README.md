@@ -66,7 +66,10 @@ recurring class-event rules to reconcile with academic-calendar exceptions.
 The file is intended for calendar applications that support iCalendar imports,
 including Google Calendar, Apple Calendar, and Outlook. Automated tests verify
 serialization, event data, escaping, line folding, and embedded timezone rules.
-**Interactive imports into those three applications have not yet been verified.**
+**Google Calendar imported all 140 sample events successfully on September 15,
+2026.** UI spot checks confirmed times, locations, Monday substitution, holiday
+suppression, and DST behavior. See the [verification report](docs/google-calendar-verification.md)
+for the exact coverage. Apple Calendar and Outlook imports remain unverified.
 
 Use a separate test calendar for the first import. Confirm the 140-event sample,
 September 8's Monday classes, November 25's Friday substitution, no holiday
