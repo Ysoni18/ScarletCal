@@ -22,6 +22,22 @@ cannot find ScarletCal after that install, use the regular installation above.
 
 ## Generate a calendar
 
+### Web interface
+
+```bash
+python -m pip install '.[web,dev]'
+scarletcal-web
+```
+
+Open [localhost:8000](http://127.0.0.1:8000), paste your WebReg schedule, select a
+semester, confirm the supported calendar, and download the `.ics` file. The
+“Try a sample” button loads the real four-course example.
+
+See [web architecture and API documentation](docs/web.md) for development setup.
+This starts a local server; public deployment is a later phase.
+
+### Command line
+
 Copy your registered WebReg schedule into a UTF-8 file named `schedule.txt`, then:
 
 ```bash
@@ -83,6 +99,7 @@ safer than repeatedly importing changed files into your main calendar.
 ## Development
 
 ```bash
+python -m pip install '.[web,dev]'
 python -m pytest
 ```
 

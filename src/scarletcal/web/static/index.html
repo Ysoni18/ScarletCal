@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Turn your Rutgers WebReg schedule into a calendar, with academic breaks and class-day changes included.">
+  <title>ScarletCal — Your semester, scheduled</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="/" aria-label="ScarletCal home"><span class="brand-icon" aria-hidden="true">S<span>▪</span></span>ScarletCal</a><span class="campus">NEW BRUNSWICK <span aria-hidden="true">↗</span></span></header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow"><span class="dot"></span> BUILT FOR YOUR RUTGERS SEMESTER</p>
+      <h1>Your classes.<br>Your calendar.<br><em>All lined up.</em></h1>
+      <p class="lede">Turn your WebReg schedule into a calendar that knows when class actually meets.</p>
+      <div class="benefits"><p><span aria-hidden="true">✓</span> Breaks and holidays accounted for</p><p><span aria-hidden="true">✓</span> Special class-day schedules included</p><p><span aria-hidden="true">✓</span> One file. Your calendar of choice.</p></div>
+      <div class="mini-calendar" aria-hidden="true"><div class="mini-top"><span>A LESS COMPLICATED SEMESTER</span><span>↗</span></div><div class="mini-days"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span></div><div class="mini-grid"><span class="slot a">Class</span><span class="slot b">Class</span><span class="slot c">Class</span><span class="slot d">Class</span><span class="slot e">Class</span></div></div>
+      <p class="independent">An independent student project. Not affiliated with Rutgers University.</p>
+    </section>
+    <section class="workspace" aria-labelledby="form-title">
+      <div class="card-heading"><p class="eyebrow">FROM WEBREG TO YOUR WEEK</p><h2 id="form-title">Build your class calendar</h2><p>A quick copy, paste, and download.</p></div>
+      <form id="schedule-form">
+        <fieldset id="fields" disabled>
+          <div class="label-row"><label for="schedule"><span class="step">01</span> Paste your WebReg schedule</label><button type="button" id="sample" class="text-button">Try a sample <span aria-hidden="true">↗</span></button></div>
+          <p id="paste-help" class="hint">Copy the registered courses and meeting lines from WebReg.</p>
+          <textarea id="schedule" name="schedule" rows="9" required maxlength="30000" spellcheck="false" aria-describedby="paste-help limits" placeholder="INTRO COMPUTER SCI (01:198:111) Section S4 | [26200] Credits: 4.0&#10;Tuesday 2:00 PM - 3:20 PM HLL-114 Busch&#10;Thursday 2:00 PM - 3:20 PM HLL-114 Busch"></textarea>
+          <div class="label-row semester-label"><label for="term"><span class="step">02</span> Choose your semester</label><span class="small-tag">NEW BRUNSWICK</span></div>
+          <select id="term" name="term" required aria-describedby="term-dates"><option value="">Loading semesters…</option></select>
+          <p id="term-dates" class="hint"></p>
+          <div id="limits" class="scope"><strong>A quick check before you export</strong><p>Supports full-term courses on the standard New Brunswick calendar, with Busch or Livingston building-room locations. Minicourses, school-specific calendars, online or arranged meetings, and exams aren’t supported yet.</p></div>
+          <label class="confirmation"><input id="standard" type="checkbox" required><span>My courses follow the standard full-term New Brunswick calendar.</span></label>
+          <button id="generate" class="primary" type="submit">Generate calendar <span aria-hidden="true">↓</span></button>
+        </fieldset>
+        <p id="status" role="status" aria-live="polite">Loading supported semesters…</p>
+        <button type="button" id="retry" class="text-button" hidden>Retry loading semesters</button>
+        <a id="download" class="download" hidden>Download calendar again ↓</a>
+      </form>
+      <p class="privacy"><span aria-hidden="true">◇</span> No Rutgers login. Your pasted schedule is processed by this server and isn’t saved by ScarletCal.</p>
+      <noscript><p>JavaScript is needed for this form. You can also use ScarletCal’s command-line tool.</p></noscript>
+    </section>
+  </main>
+  <section class="after" aria-labelledby="after-title"><h2 id="after-title">One last step. Import and go.</h2><div><p><b>01</b> Download your .ics file.</p><p><b>02</b> Import it into a separate class calendar.</p><p><b>03</b> Check a few dates, then you’re set.</p></div><p class="import-note">Google Calendar import verified. Apple Calendar and Outlook accept .ics files, but ScarletCal imports there are still awaiting verification. A download won’t update a calendar you’ve already imported.</p></section>
+  <footer><span class="brand-text">ScarletCal</span><span>A little less admin. A little more semester.</span><a id="calendar-source" href="https://scheduling.rutgers.edu/academic-calendar/" target="_blank" rel="noopener noreferrer">Official academic calendar ↗</a></footer>
+</body>
+</html>
