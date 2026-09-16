@@ -31,7 +31,7 @@ scarletcal-web
 
 Open [localhost:8000](http://127.0.0.1:8000), paste your WebReg schedule, select a
 semester, confirm the supported calendar, and download the `.ics` file. The
-“Try a sample” button loads the real four-course example.
+“Load example” button loads the real four-course example.
 
 See [web architecture and API documentation](docs/web.md) for development setup.
 This starts a local server; public deployment is a later phase.
