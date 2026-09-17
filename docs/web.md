@@ -23,6 +23,7 @@ python -m uvicorn scarletcal.web.app:app --app-dir src --reload
 - `POST /api/calendar`: JSON containing `schedule`, `term`, and
   `standard_calendar: true`. Returns ICS bytes as an attachment, with
   `X-Event-Count` and `X-Course-Count` headers.
+- `GET /healthz`: process and bundled-term health.
 - `/docs`: generated API documentation.
 
 Pasted schedules are limited to 30,000 characters. Invalid input returns 422 with
@@ -32,14 +33,14 @@ avoid echoing the entire input. Responses use `Cache-Control: no-store`.
 The API calls the existing parser, term loader, scheduler, and ICS exporter. It
 never writes the user's schedule or generated calendar to disk. The browser
 receives the download and keeps the pasted text only in the current page; it does
-not use localStorage or send analytics. Hosting infrastructure is a separate
-Phase 9 concern; operators must avoid logging request bodies.
+not use localStorage or send analytics. The production entry point logs only request IDs, route templates, status and
+duration. Operators must also avoid capturing bodies in hosting infrastructure.
 
 ## Frontend
 
 Plain HTML/CSS/JavaScript is served from the same process and packaged with the
-Python distribution. No Node build step or cross-origin API configuration is
-needed. The page has visible labels, native validation, keyboard focus styling,
+Python distribution. No Node build step is needed locally. The Pages build generates `config.js`
+with an HTTPS API origin; Render explicitly permits the Pages origin via CORS. The page has visible labels, native validation, keyboard focus styling,
 a live status region, loading/error states, and a reusable download link.
 
 The form fetches supported terms, provides the real sample as an optional example,
@@ -55,6 +56,6 @@ Run `python -m pytest` in the environment with `web` and `dev` extras installed.
 API tests cover both terms, the real 140-event pipeline, invalid requests, parser
 errors, downloadable headers, static files, and absence of output files on disk.
 
-These phases deliver a locally runnable web MVP. Public hosting, rate limiting,
-reverse-proxy request limits, monitoring, CI, and broader browser/client testing
-remain Phase 9 work. Existing parser and calendar limitations still apply.
+Phase 9 adds CI configuration, a 200,000-byte request limit, private operational
+logs, generic unexpected errors and deployment files. See [deployment status](deployment.md)
+for remaining launch and verification steps. Parser limitations still apply.

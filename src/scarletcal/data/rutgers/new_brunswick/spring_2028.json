@@ -1,0 +1,56 @@
+{
+  "campus": "new_brunswick",
+  "timezone": "America/New_York",
+  "source": "https://scheduling.rutgers.edu/academic-calendar/",
+  "verified_on": "2026-09-15",
+  "term": "spring-2028",
+  "instruction_start": "2028-01-18",
+  "instruction_end": "2028-05-01",
+  "instructional_overrides": [
+    {
+      "date": "2028-03-11",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2028-03-12",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2028-03-13",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2028-03-14",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2028-03-15",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2028-03-16",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2028-03-17",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2028-03-18",
+      "weekday": null,
+      "reason": "Spring recess"
+    },
+    {
+      "date": "2028-03-19",
+      "weekday": null,
+      "reason": "Spring recess"
+    }
+  ]
+}

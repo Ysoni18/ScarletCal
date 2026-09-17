@@ -27,6 +27,8 @@ def test_terms_use_bundled_calendar_data(client):
     assert [(t['id'], t['instruction_start'], t['instruction_end']) for t in response.json()] == [
         ('fall-2026', '2026-09-01', '2026-12-10'),
         ('spring-2027', '2027-01-19', '2027-05-03'),
+        ('fall-2027', '2027-09-01', '2027-12-13'),
+        ('spring-2028', '2028-01-18', '2028-05-01'),
     ]
 
 
@@ -96,3 +98,14 @@ def test_page_and_packaged_assets(client):
         assert response.status_code == 200
         assert media in response.headers['content-type']
     assert client.get('/static/missing.css').status_code == 404
+
+
+def test_synthetic_friday_fixture_covers_substituted_day(client, payload):
+    payload['schedule'] = (Path(__file__).parents[1] / 'fixtures/webreg_synthetic_friday.txt').read_text()
+    response = client.post('/api/calendar', json=payload)
+    assert response.status_code == 200
+    events = Calendar.from_ical(response.content).walk('VEVENT')
+    special = [e for e in events if e.decoded('DTSTART').date().isoformat() == '2026-11-25']
+    assert len(special) == 1
+    assert special[0].decoded('DTSTART').hour == 12
+    assert not any(e.decoded('DTSTART').date().isoformat() == '2026-11-27' for e in events)

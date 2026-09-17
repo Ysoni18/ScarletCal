@@ -34,7 +34,8 @@ semester, confirm the supported calendar, and download the `.ics` file. The
 “Load example” button loads the real four-course example.
 
 See [web architecture and API documentation](docs/web.md) for development setup.
-This starts a local server; public deployment is a later phase.
+See [deployment setup and status](docs/deployment.md) for the prepared GitHub
+Pages frontend and Render backend configuration. Public deployment is pending.
 
 ### Command line
 
@@ -68,7 +69,7 @@ Expected: **140 class events**.
 ## Scope
 
 - Standard New Brunswick calendar; full-term courses only.
-- Bundled Fall 2026 and Spring 2027 calendars, with source and verification date.
+- Bundled Fall 2026 through Spring 2028 calendars, with source and verification date.
 - Current parser supports the observed Busch/Livingston building-room format.
 - Minicourses, special school calendars, online/arranged meetings, exams,
   assignments, and emergency closures are not supported.
@@ -114,3 +115,5 @@ The CLI only connects these layers and handles file I/O.
 - [Parser design](docs/parser.md)
 - [Calendar and scheduling design](docs/academic-calendar-and-scheduling.md)
 - [ICS and CLI design](docs/ics-and-cli.md)
+
+- [Production hardening and deployment](docs/deployment.md)

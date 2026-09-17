@@ -117,3 +117,22 @@ def test_invalid_manual_models(fall, kind):
         course = replace(course, meetings=(replace(course.meetings[0], start_time=time(10, tzinfo=ZoneInfo('America/New_York'))),))
     with pytest.raises(SchedulingError):
         generate_occurrences([course] * (2 if kind == 'duplicate_course' else 1), fall)
+
+
+def test_fall_2027_published_exceptions_and_boundaries():
+    events = generate_occurrences([course_for(*Weekday)], load_rutgers_term('fall-2027'))
+    by_date = {event.start.date(): event for event in events}
+    assert min(by_date) == date(2027, 9, 1)
+    assert max(by_date) == date(2027, 12, 13)
+    assert date(2027, 9, 6) not in by_date
+    assert by_date[date(2027, 9, 8)].meeting.weekday == Weekday.MONDAY
+    assert by_date[date(2027, 11, 29)].meeting.weekday == Weekday.WEDNESDAY
+    assert all(date(2027, 11, day) not in by_date for day in range(24, 29))
+
+
+def test_spring_2028_published_break_and_boundaries():
+    events = generate_occurrences([course_for(*Weekday)], load_rutgers_term('spring-2028'))
+    days = {event.start.date() for event in events}
+    assert min(days) == date(2028, 1, 18)
+    assert max(days) == date(2028, 5, 1)
+    assert all(date(2028, 3, day) not in days for day in range(11, 20))

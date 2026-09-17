@@ -1,4 +1,6 @@
 'use strict';
+const apiOrigin = window.SCARLETCAL_API_ORIGIN || '';
+const apiUrl = path => apiOrigin + path;
 const form = document.querySelector('#schedule-form');
 const fields = document.querySelector('#fields');
 const schedule = document.querySelector('#schedule');
@@ -25,7 +27,9 @@ async function request(url, options = {}) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 30000);
   try {
-    return await fetch(url, {...options, signal: controller.signal});
+    const response = await fetch(url, {...options, signal: controller.signal, credentials: 'omit'});
+    const body = await response.blob();
+    return new Response(body, {status: response.status, statusText: response.statusText, headers: response.headers});
   } finally {
     clearTimeout(timeout);
   }
@@ -40,7 +44,7 @@ async function loadTerms() {
   retry.hidden = true;
   message('Loading supported semesters…');
   try {
-    const response = await request('/api/terms');
+    const response = await request(apiUrl('/api/terms'));
     if (!response.ok) throw new Error('Cannot load semesters.');
     terms = await response.json();
     if (!Array.isArray(terms) || !terms.length) throw new Error('No semesters available.');
@@ -60,7 +64,7 @@ document.querySelector('#sample').addEventListener('click', async () => {
   fields.disabled = true;
   clearDownload();
   try {
-    const response = await request('/static/example.txt');
+    const response = await request('./static/example.txt');
     if (!response.ok) throw new Error('Sample unavailable.');
     schedule.value = await response.text();
     message('Sample loaded: four courses. Choose a semester and confirm the calendar below.');
@@ -86,7 +90,7 @@ form.addEventListener('submit', async event => {
   generate.textContent = 'Building your calendar…';
   message('Checking your schedule and generating class events…');
   try {
-    const response = await request('/api/calendar', {
+    const response = await request(apiUrl('/api/calendar'), {
       method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload),
     });
     if (!response.ok) {

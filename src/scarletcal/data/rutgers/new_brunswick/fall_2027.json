@@ -1,0 +1,51 @@
+{
+  "campus": "new_brunswick",
+  "timezone": "America/New_York",
+  "source": "https://scheduling.rutgers.edu/academic-calendar/",
+  "verified_on": "2026-09-15",
+  "term": "fall-2027",
+  "instruction_start": "2027-09-01",
+  "instruction_end": "2027-12-13",
+  "instructional_overrides": [
+    {
+      "date": "2027-09-06",
+      "weekday": null,
+      "reason": "Labor Day"
+    },
+    {
+      "date": "2027-09-08",
+      "weekday": "Monday",
+      "reason": "Monday classes"
+    },
+    {
+      "date": "2027-11-24",
+      "weekday": null,
+      "reason": "Thanksgiving recess"
+    },
+    {
+      "date": "2027-11-25",
+      "weekday": null,
+      "reason": "Thanksgiving recess"
+    },
+    {
+      "date": "2027-11-26",
+      "weekday": null,
+      "reason": "Thanksgiving recess"
+    },
+    {
+      "date": "2027-11-27",
+      "weekday": null,
+      "reason": "Thanksgiving recess"
+    },
+    {
+      "date": "2027-11-28",
+      "weekday": null,
+      "reason": "Thanksgiving recess"
+    },
+    {
+      "date": "2027-11-29",
+      "weekday": "Wednesday",
+      "reason": "Wednesday classes"
+    }
+  ]
+}

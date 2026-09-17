@@ -6,14 +6,16 @@
   <meta name="description" content="Convert your Rutgers WebReg schedule into a calendar with academic breaks and class-day changes included.">
   <title>ScarletCal — Semester workspace</title>
   <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/config.js" defer></script>
   <script src="/static/app.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="topbar">
     <a class="brand" href="/" aria-label="ScarletCal home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>ScarletCal<span class="brand-slash">/</span><span class="brand-caption">semester workspace</span></a>
     <a class="guide-link" href="#import-guide">Import guide <span aria-hidden="true">↗</span></a>
   </header>
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="intro" aria-labelledby="page-title">
       <div><p class="kicker">RUTGERS · NEW BRUNSWICK</p><h1 id="page-title">A semester.<br>A single <span>download.</span></h1><p class="intro-copy">Bring your classes into your calendar.<br>We’ll take care of the dates in between.</p></div>
       <div class="semester-stamp" aria-hidden="true"><span>YOUR NEXT</span><strong>CHAPTER</strong><div class="stamp-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span>STARTS WITH A PLAN</span></div>
@@ -26,7 +28,7 @@
             <div class="section-heading"><label id="schedule-label" for="schedule"><span class="number">01</span> Your schedule</label><button type="button" id="sample" class="text-button">Load example <span aria-hidden="true">↗</span></button></div>
             <p id="paste-help" class="helper">Paste your registered courses and meeting lines from WebReg.</p>
             <div class="editor-frame"><div class="editor-toolbar" aria-hidden="true"><span><i></i> WEBREG / PLAIN TEXT</span><span>PASTE BELOW</span></div><textarea id="schedule" name="schedule" rows="13" required maxlength="30000" spellcheck="false" aria-describedby="paste-help limits" placeholder="INTRO COMPUTER SCI (01:198:111) Section S4 | [26200] Credits: 4.0&#10;Tuesday 2:00 PM - 3:20 PM HLL-114 Busch&#10;Thursday 2:00 PM - 3:20 PM HLL-114 Busch&#10;&#10;Paste the rest of your courses here…"></textarea></div>
-            <p class="privacy"><span aria-hidden="true">◈</span> No login needed. Your text is processed by this server and isn’t saved by ScarletCal.</p>
+            <p class="privacy"><span aria-hidden="true">◈</span> No login needed. Your text is processed by the ScarletCal backend and isn’t saved by ScarletCal.</p>
           </section>
           <section class="settings" aria-labelledby="term-label">
             <label id="term-label" for="term"><span class="number">02</span> Semester & export</label>
