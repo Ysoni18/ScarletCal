@@ -16,6 +16,7 @@ _COURSE_HEADER_RE = re.compile(
     r"Section[ \t]+(?P<section>[A-Za-z0-9]+)[ \t]+\|[ \t]+"
     r"\[(?P<index>[0-9]{5})\][ \t]+"
     r"Credits:[ \t]+(?P<credits>[0-9]+\.[0-9]+)"
+    r"(?:[ \t]+\((?:P|\*P\*)\))?"  # Grading marker does not affect meetings.
 )
 _TIME_PATTERN = r"(?:[1-9]|1[0-2]):[0-5][0-9][ \t]+(?:AM|PM)"
 _MEETING_RE = re.compile(
@@ -36,7 +37,7 @@ class WebRegParseError(ValueError):
 
 def parse_course_header(line: str) -> dict[str, str | float] | None:
     """Return header metadata, or None when the line is not a course header."""
-    match = _COURSE_HEADER_RE.fullmatch(line.strip())
+    match = _COURSE_HEADER_RE.fullmatch(line.replace("\u00a0", " ").strip())
     if match is None:
         return None
 
@@ -61,7 +62,7 @@ def parse_meeting(line: str) -> MeetingPattern:
 
     Only same-day meetings with an end time later than their start are supported.
     """
-    match = _MEETING_RE.fullmatch(line.strip())
+    match = _MEETING_RE.fullmatch(line.replace("\u00a0", " ").strip())
     if match is None:
         raise WebRegParseError(
             "Invalid or unsupported meeting. Expected a weekday, "

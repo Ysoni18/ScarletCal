@@ -172,3 +172,28 @@ def test_duplicate_meeting():
 
 def test_header_does_not_consume_multiple_lines():
     assert parse_course_header(HEADER.replace("Section", "\nSection")) is None
+
+
+@pytest.mark.parametrize("marker", ["(P)", "(*P*)"])
+@pytest.mark.parametrize("space", [" ", "\u00a0"])
+def test_pass_fail_header_preserves_metadata(marker, space):
+    plain = "THE BUSN OF EVRTHING (33:011:110) Section H1 | [00050] Credits: 1.0"
+    assert parse_course_header((plain + " " + marker).replace(" ", space)) == parse_course_header(plain)
+
+
+@pytest.mark.parametrize("marker", ["P", "(X)", "(P", "(P) unexpected", "(P) (P)"])
+def test_unknown_or_malformed_grading_suffix_is_rejected(marker):
+    with pytest.raises(WebRegParseError):
+        parse_webreg_schedule(f"{HEADER} {marker}\n{MEETING}")
+
+
+def test_user_pass_fail_schedule_matches_unmarked_schedule():
+    text = (Path(__file__).parents[1] / "fixtures/webreg_pass_fail.txt").read_text()
+    courses = parse_webreg_schedule(text)
+    assert courses == parse_webreg_schedule(text.replace(" (P)", "").replace("\u00a0(P)", "").replace("\u00a0", " "))
+    assert len(courses) == 5
+    assert courses[-1].index == "00050"
+    assert courses[-1].credits == 1.0
+    assert courses[-1].meetings == (
+        MeetingPattern(Weekday.FRIDAY, time(12, 10), time(13, 30), "BRR-2071", "Livingston"),
+    )

@@ -17,7 +17,10 @@ meetings on the same weekday remain separate.
 
 1. `parse_course_header()` uses a compiled regex with named groups. It returns
    metadata or `None` for a non-header. Identifiers remain strings (including
-   section `02`); credits become a float. Title whitespace is normalized.
+   section `02`); credits become a float. Title whitespace is normalized. An optional `(P)` pass/fail marker after
+   credits is accepted (also `(*P*)` from formatted text) and omitted from course
+   metadata because it does not change class meetings. Non-breaking clipboard
+   spaces are accepted in headers and meeting lines.
 2. `parse_meeting()` recognizes a weekday, two 12-hour clock times, a location,
    and a campus. It returns structured `datetime.time` values in a
    `MeetingPattern`, or raises `WebRegParseError`.
@@ -34,6 +37,8 @@ malformed headers: those lines fail meeting parsing and produce an error.
 The fixture `tests/fixtures/webreg_registered_courses.txt` combines the actual
 navigation banner and four-course plain-text sample supplied by the developer.
 It contains 10 meetings, including two Thursday meetings for Computer Science.
+The five-course `webreg_pass_fail.txt` fixture adds the user-reported pass/fail
+case; map links are represented by their visible labels for plain-text input.
 The additional clock/error test cases are synthetic boundary cases.
 
 Currently supported meetings have:

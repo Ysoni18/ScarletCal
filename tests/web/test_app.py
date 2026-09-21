@@ -109,3 +109,18 @@ def test_synthetic_friday_fixture_covers_substituted_day(client, payload):
     assert len(special) == 1
     assert special[0].decoded('DTSTART').hour == 12
     assert not any(e.decoded('DTSTART').date().isoformat() == '2026-11-27' for e in events)
+
+
+@pytest.mark.parametrize('marker', ['(P)', '(*P*)'])
+def test_pass_fail_schedule_download_includes_fifth_course(client, payload, marker):
+    payload['schedule'] = (Path(__file__).parents[1] / 'fixtures/webreg_pass_fail.txt').read_text().replace('(P)', marker)
+    response = client.post('/api/calendar', json=payload)
+    assert response.status_code == 200
+    assert response.headers['x-course-count'] == '5'
+    events = Calendar.from_ical(response.content).walk('VEVENT')
+    business = [e for e in events if str(e['SUMMARY']) == 'THE BUSN OF EVRTHING']
+    assert len(business) == 14
+    assert len(events) == 154
+    assert all(str(e['LOCATION']) == 'BRR-2071 (Livingston)' for e in business)
+    assert any(e.decoded('DTSTART').date().isoformat() == '2026-11-25' for e in business)
+    assert all(e.decoded('DTSTART').hour == 12 and e.decoded('DTSTART').minute == 10 for e in business)

@@ -1,0 +1,20 @@
+INTRO COMPUTER SCI (01:198:111) Section S4 | [26200] Credits: 4.0
+Tuesday 2:00 PM - 3:20 PM HLL-114 Busch
+Thursday 2:00 PM - 3:20 PM HLL-114 Busch
+Thursday 8:45 AM - 9:40 AM BE-121 Livingston
+
+INTRO LINEAR ALGEBRA (01:640:250) Section C2 | [13065] Credits: 3.0
+Monday 2:00 PM - 3:20 PM LSH-B267 Livingston
+Wednesday 2:00 PM - 3:20 PM LSH-B267 Livingston
+
+MULTIVARIABLE CALC (01:640:251) Section H5 | [13113] Credits: 4.0
+Tuesday 3:50 PM - 5:10 PM SEC-210 Busch
+Thursday 3:50 PM - 5:10 PM SEC-210 Busch
+Wednesday 12:10 PM - 1:30 PM ARC-204 Busch
+
+ANALYTICAL PHYSICS I (01:750:123) Section 02 | [13307] Credits: 2.0
+Wednesday 10:20 AM - 11:40 AM PHY-001 Busch
+Monday 10:20 AM - 11:40 AM PAB-227 Busch
+
+THE BUSN OF EVRTHING (33:011:110) Section H1 | [00050] Credits: 1.0 (P)
+Friday 12:10 PM - 1:30 PM BRR-2071 Livingston
